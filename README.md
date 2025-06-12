@@ -5,8 +5,7 @@ Dieses Projekt demonstriert, wie mathematische Einsichten zu eleganter und effiz
 
 [http://mathe.schwentker.de/pascal/pascal.html](http://mathe.schwentker.de/pascal/pascal.html)
 
-![alt text](assets/pascal_preview.png)
-
+<img src="assets/pascal_preview.png" alt="Screenshot webapp" style="max-width: 100%; width: 400px;">
 
 ## 📌 Features
 
