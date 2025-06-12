@@ -31,10 +31,10 @@ Das Pascalsche Dreieck
   1   3   3   1
 1   4   6   4   1
 ```
+$\frac{a}{b}$
 
-```
-{n \choose k} = \frac{n!}{k!(n-k)!}
-```
+${n \choose k} = \frac{n!}{k!(n-k)!}$
+
 
 > Binomialkoeffizient:  
 > "n über k" = n! / (k! × (n − k)!)
