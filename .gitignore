@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Pip/Conda
+.env
+*.env
+*.egg-info/
+*.sqlite3
+
+# VS Code
+.vscode/
+
+# macOs
+.DS_Store  # macOS
+
+# other
+.htaccess
+Wissen/

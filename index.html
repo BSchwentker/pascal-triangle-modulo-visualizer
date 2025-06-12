@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pascalsches Dreieck – Teilbarkeitsmuster</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <script defer src="js/script.js"></script>
+</head>
+<body>
+  <!-- Info button -->
+  <button id="info-btn" onclick="openInfo()">i</button>
+
+  <h2>Pascalsches Dreieck: Teilbarkeitsmuster</h2>
+
+  <!-- Main content layout -->
+  <main>
+    <!-- Controls section -->
+    <div id="controls">
+      <label>Zeilen:
+        <input type="number" id="rows" value="50" min="1" max="5000"" />
+      </label>
+      <label>Teiler:
+        <input type="number" id="mod" value="2" onchange="updatePatternAndCenter()" />
+      </label>
+      <div class="zoom-buttons">
+        <span>Zoom:</span>
+        <button onclick="changeZoom(-1)">−</button>
+        <button onclick="changeZoom(1)">+</button>
+      </div>
+    </div>
+
+    <!-- Pascal pattern container -->
+    <div id="container">
+      <textarea id="output" wrap="off" readonly></textarea>
+    </div>
+
+    <!-- Hidden element for measurement -->
+    <pre id="measurer"></pre>
+  </main>
+
+  <!-- Information overlay -->
+  <div id="overlay" onclick="closeInfo(event)">
+    <div id="overlay-box" onclick="event.stopPropagation()">
+      <h3>Über diese Seite</h3>
+      <p>
+        Dieses interaktive Tool zeigt grafische Teilbarkeitsmuster im Pascalschen Dreieck.<br><br>
+        Die Darstellung mit Punkten (·) und Markierungen (V) basiert auf einer Idee von
+        <a href="https://www.arndt-bruenner.de/mathe/scripts/pascalmod.htm" target="_blank">Arndt Brünner</a>.
+        <br><br>
+        Erstellt von <a href="https://github.com/BSchwentker" target="_blank">Björn Schwentker</a>.<!-- 
+        Quellcode verfügbar auf <a href="https://github.com/deinname/pascals-dreieck" target="_blank">GitHub</a>. -->
+      </p>
+      <button id="overlay-close" onclick="closeInfo(event)">Schließen</button>
+    </div>
+  </div>
+</body>
+</html>
