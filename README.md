@@ -1,11 +1,11 @@
-# Pascalsches Dreieck – Teilbarkeitsmuster
+s# Pascalsches Dreieck – Teilbarkeitsmuster
 
 Ein interaktives, responsives Web-Tool zur Visualisierung von Teilbarkeitsmustern im Pascalschen Dreieck.  
 Dieses Projekt demonstriert, wie mathematische Einsichten zu eleganter und effizienter Webentwicklung führen können.
 
 [http://mathe.schwentker.de/pascal/pascal.html](http://mathe.schwentker.de/pascal/pascal.html)
 
-![alt text](pictures/pascal_preview.png)
+![alt text](assets/pascal_preview.png)
 
 
 ## 📌 Features
