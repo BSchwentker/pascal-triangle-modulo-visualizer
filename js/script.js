@@ -99,25 +99,6 @@ function closeInfo(event) {
   document.getElementById("overlay").style.display = "none";
 }
 
-
-/* document.getElementById("rows").addEventListener("change", function () {
-  const input = this;
-  const value = parseInt(input.value, 10);
-
-  if (value > 5000) {
-    input.value = 5000;
-  } else if (value < 1 || isNaN(value)) {
-    input.value = 50;
-  }
-
-  // Wait until browser had a chance to update the input visually
-  requestAnimationFrame(() => {
-    updatePatternAndCenter();
-  });
-
-});
- */
-
 const rowsInput = document.getElementById("rows");
 
 rowsInput.addEventListener("input", function () {
