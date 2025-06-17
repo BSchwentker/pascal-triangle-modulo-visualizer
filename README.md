@@ -1,21 +1,22 @@
 # Pascalsches Dreieck – Teilbarkeitsmuster
 
+🇬🇧 [Read this page in English.](./README.EN.md)
+
 Ein interaktives, responsives Web-Tool zur Visualisierung von großen Teilbarkeitsmustern mit bis zu 5.000 Zeilen im Pascalschen Dreieck.
 Online-Version: [http://mathe.schwentker.de/pascal/index.html](http://mathe.schwentker.de/pascal/index.html)
 
 <img src="assets/pascal_preview.png" alt="Screenshot webapp" style="max-width: 100%; width: 400px;">
 
-## 📌 Features
+## Features
 
 - Interaktive Steuerung von Zeilenzahl und Teiler
 - Zoom-Funktion für große Muster
 - Schnelle Berechnung großer Muster bis 5.000 Zeilen durch ressourchenschonenden Algorithmus ohne ${n \choose k}$ ("n über k")
-- Overlay mit mathematischen Hintergrundinformationen
 - Minimalistisch, performant und leichtgewichtig (keine Frameworks)
 - Responsives Design (funktioniert auf Mobilgeräten, Tablets und Desktops)
 
 
-## 🧼 Mathematischer Hintergrund
+## Mathematischer Hintergrund
 
 Das Pascalsche Dreieck besteht aus ganzen Zahlen, die zeilenweise versetzt untereinander geschrieben werden. Beginnen mit der $1$ in der obersten Zeile (man denkt sich links und rechts davon je eine unsichtbare $0$ dazu), ergeben sie sich die Zahlen in der jeweils nachfolgenden Zeile immer aus der Summer der beiden direkt links und rechts darüber stehenden Zahlen. Beispiel für die ersten 5 Zeilen:
 
@@ -39,15 +40,14 @@ $(a + b)^n = \sum_{k=0}^{n} {n \choose k} a^{n-k} b^k$.
 
 ### Modulo-Muster im Pascalschen Dreieck
 
-In der Web-App werden nicht die Zahlenwerte des Pascalschen Dreiecks selbst ausgegeben. Stattdessen angezeigt, ob der Wert durch die ganze Zahl $m$ (in der Web-App als Teiler eingestellt) teilbar ist ($a_{n,k}\mod m = 0$) oder nicht ($a_{n,k}\mod m \neq 0$).
-Die Einträge des Dreiecks werden in einem Textfeld so dargestellt:
+In der Web-App werden nicht die Zahlenwerte des Pascalschen Dreiecks selbst ausgegeben. Stattdessen wird an dieser Position angezeigt, ob der Wert durch die ganze Zahl $m$ (in der Web-App als Teiler eingestellt) teilbar ist:
 
 - `·`, wenn Wert nicht durch *m* teilbar ($a_{n,k}\mod m \neq 0$)
 - `V`, wenn Wert durch *m* teilbar ($a_{n,k}\mod m = 0$)
 
 Es entsteht so z.B. bei *m = 2* das berühmte **Sierpinski-Dreieck**, bei *m = 3, 5, 7* weitere fraktalartige **modulare Muster**. Solche Muster sind nicht nur schön, sondern [in der Mathematik tatsächlich Forschungsgegenstand](https://scholar.google.de/scholar?hl=de&as_sdt=0%2C5&q=Pascal%E2%80%99s+Triangle+modulo+m+&btnG=).
 
-## 🔁 Effiziente Berechnung
+## Effiziente Berechnung
 
 Da mit der App auch große Muster bis 5.000 Zeilen berechnet werden sollen, müssen die Einträge im Pascalschen Dreieck effizient berechnet werden. Die direkte Berechnung über die Binomialkoeffizienten ${n \choose k}$ ist wegen der Fakultäten zu rechenintensiv $\(O(n!)\)$ und führt schnell zu sehr großen Zahlen. Schon für nur 150 Zeilen ist der größte Beitrag mit 
 
