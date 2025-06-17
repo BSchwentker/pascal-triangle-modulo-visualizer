@@ -14,7 +14,7 @@ __pycache__/
 .vscode/
 
 # macOs
-.DS_Store  # macOS
+.DS_Store 
 
 # other
 .htaccess
