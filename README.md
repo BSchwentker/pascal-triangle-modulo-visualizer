@@ -1,15 +1,15 @@
 # Pascalsches Dreieck – Teilbarkeitsmuster
 
-Ein interaktives, responsives Web-Tool zur Visualisierung von Teilbarkeitsmustern im Pascalschen Dreieck.
-Online-Version: [http://mathe.schwentker.de/pascal/pascal.html](http://mathe.schwentker.de/pascal/pascal.html)
+Ein interaktives, responsives Web-Tool zur Visualisierung von großen Teilbarkeitsmustern mit bis zu 5.000 Zeilen im Pascalschen Dreieck.
+Online-Version: [http://mathe.schwentker.de/pascal/index.html](http://mathe.schwentker.de/pascal/index.html)
 
 <img src="assets/pascal_preview.png" alt="Screenshot webapp" style="max-width: 100%; width: 400px;">
 
 ## 📌 Features
 
-- Interaktive Steuerung von Zeilenzahl und Teiler (Modulo)
+- Interaktive Steuerung von Zeilenzahl und Teiler
 - Zoom-Funktion für große Muster
-- Schnelle Berechnung großer Muster bis 5000 Zeilen durch ressourchenschonenden Algorithmus ohne "n über k"
+- Schnelle Berechnung großer Muster bis 5.000 Zeilen durch ressourchenschonenden Algorithmus ohne ${n \choose k}$ ("n über k")
 - Overlay mit mathematischen Hintergrundinformationen
 - Minimalistisch, performant und leichtgewichtig (keine Frameworks)
 - Responsives Design (funktioniert auf Mobilgeräten, Tablets und Desktops)
@@ -26,7 +26,7 @@ Das Pascalsche Dreieck besteht aus ganzen Zahlen, die zeilenweise versetzt unter
   1   3   3   1
 1   4   6   4   1
 ```
-Die rekursive Rechenregel für den Eintrag $a_{n,k}$ an der $k$ten Stelle in der $n$ten Zeile lautet also:
+Die rekursive Rechenregel für den Eintrag $a_{n,k}$ an der $k$-ten Stelle in der $n$-ten Zeile lautet also:
 $$a_{n,k} = a_{n-1,k-1} + a_{n-1,k}$$
 Sowohl die Nummerierung der Zeilen ($n$), als auch die der Einträge innerhalb einer Zeile ($k$), beginnt dabei mit $0$. An den Positionen links und rechts der Einsen am Rand denkt man sich wieder je eine $0$ hinzu. Direkt berechnen lassen sich die Einträge mit dem **Binomialkoeffizienten**:
 ```math
@@ -34,7 +34,7 @@ a_{n,k} = {n \choose k} = \frac{n!}{k!(n-k)!}
 ```
 
 Die Binomialkoeffizienten, bzw. Zahlen im Pascaleschen Dreieck haben viele interessante und nützliche mathematische Eigenschaften. So steht ${n \choose k}$ in der Kombinatorik für die Anzahl der Möglichkeiten, $k$ Objekte aus $n$ zu wählen, ohne Beachtung der Reihenfolge.
-In der Algebra geben die Binomialkoeffizienten die Koeffizienten in der **Binomialformel** an, etwa $(a + b)^2 = a^2 + 2ab + b^2$, (Zeile Nummer $2$ im Dreieck), oder allgemein:
+In der Algebra geben die Binomialkoeffizienten die Koeffizienten in der **Binomialformel** an, etwa $(a + b)^2 = 1\cdot a^2 + 2\cdot ab + 1\cdot b^2$, (Zeile Nummer $2$ im Dreieck), oder allgemein:
 $(a + b)^n = \sum_{k=0}^{n} {n \choose k} a^{n-k} b^k$.
 
 ### Modulo-Muster im Pascalschen Dreieck
@@ -49,29 +49,33 @@ Es entsteht so z.B. bei *m = 2* das berühmte **Sierpinski-Dreieck**, bei *m = 3
 
 ## 🔁 Effiziente Berechnung
 
-Da mit der App auch große Muster bis 5000 Zeilen berechnet werden sollen, müssen die Einträge im Pascalschen Dreieck effizient berechnet werden. Die direkte Berechnung über die Binomialkoeffizienten ${n \choose k}$ ist wegen der Fakultäten zu rechenintensiv ($O(n!)$) und führtschnell zu sehr großen Zahlen. Schon für nur 150 Zeilen ist der größte Beitrag mit $46.413.034.868.354.394.849.492.907.436.302.560.970.058.760$ schon in der Größenordnung $10^{44}$. Die Speicherung aller Werte in einer Lookup-Tabelle (Precompute) würde unnötig viel Speicher verbrauchen ($O(n^2)$).
+Da mit der App auch große Muster bis 5.000 Zeilen berechnet werden sollen, müssen die Einträge im Pascalschen Dreieck effizient berechnet werden. Die direkte Berechnung über die Binomialkoeffizienten ${n \choose k}$ ist wegen der Fakultäten zu rechenintensiv $\(O(n!)\)$ und führt schnell zu sehr großen Zahlen. Schon für nur 150 Zeilen ist der größte Beitrag mit 
 
-Zum Glück geht es viel einfacher: Denn nicht nur die Einträge des Pascalschen Dreiecks selbst lassen sich ohne die Fakultäst-Formel rekusriv viel einfacher berechnnen (via $a_{n,k} = a_{n-1,k-1} + a_{n-1,k}$). Eine ähnlich einfache rekursive Regel gilt auch für die Einträge modulo $m$:
+$${149 \choose 74}  = 46.413.034.868.354.394.849.492.907.436.302.560.970.058.760$$
+
+schon in der Größenordnung $10^{44}$. Die Speicherung aller Werte in einer Lookup-Tabelle (Precompute) würde unnötig viel Speicher verbrauchen $\(O(n^2)\)$.
+
+Zum Glück geht es viel einfacher: Denn nicht nur die Einträge des Pascalschen Dreiecks selbst lassen sich ohne die Fakultäst-Formel rekursiv berechnnen (via $a_{n,k} = a_{n-1,k-1} + a_{n-1,k}$). Eine ähnlich einfache rekursive Regel gilt auch für die Einträge modulo $m$:
 
 $$a_{n,k}\mod m = (a_{n-1,k-1}\mod m + a_{n-1,k}\mod m)\mod m$$
 
-Mit dieser Regel berechnen sich die Einträge rekusriv blitzschnell und speicherschonend, da jeweils nur kleine Modulowerte berechnet und addiert werden müssen. Mathematisch funktioniert das, weil Modulo-Operationen generell "kompatibel mit der Addition" sind ($(a + b) \mod m = \left( (a \mod m) + (b \mod m) \right) \mod m$).
+Mit dieser Regel berechnen sich die Einträge rekursiv blitzschnell und speicherschonend, da jeweils nur kleine Modulowerte berechnet und addiert werden müssen. Mathematisch funktioniert das, weil Modulo-Operationen generell "kompatibel mit der Addition" sind: $(a + b) \mod m = \left( (a \mod m) + (b \mod m) \right) \mod m$.
 
 ### Vergleich der Berechnungsansätze
 
 | Methode                       | Rechenaufwand         | Speicherbedarf       | Bewertung       |
 |------------------------------|------------------------|----------------------|-----------------|
-| Direkte Berechnung mit Fakultäten | Hoch (n!)              | Mittel               | ❌ langsam       |
-| Lookup-Tabelle (Precompute)  | Schnell                | Hoch (O(n²))         | ❌ speicherintensiv |
-| **Iterative Modulo-Berechnung** | **Sehr gering**         | **Minimal**          | ✅ optimal       |
+| Direkte Berechnung mit Fakultäten | hoch $\(O(n!)\)$              | mittel               | ❌ langsam       |
+| Lookup-Tabelle (Precompute)  | schnell                | hoch $\(O(n^2)\)$         | ❌ speicherintensiv |
+| **Iterative Modulo-Berechnung** | **sehr gering**         | **minimal**          | ✅ optimal       |
 
-Noch effizienter ließen sich die Modulo-Einträge berechnen, wenn man die Symmetrie des Pascalschen Dreiecks ausnutzt ($a_{n,k} = a_{n,n - k}$ wegen ${n \choose k} = {n \choose n - k}$). Aber das bringt wegen der ohnehin schon so einfachen Berechnung kaum mehr wahrnehmbare Geschwindigkeitsvorteile und geht zulasten der Lesbarkeit des Codes. Darum wird die Symmetrie im Code nicht ausgenutzt.
+Noch effizienter ließen sich die Modulo-Einträge berechnen, wenn man die Symmetrie des Pascalschen Dreiecks ausnutzt: $a_{n,k} = a_{n,n - k}$ wegen ${n \choose k} = {n \choose n - k}$. Aber das bringt wegen der ohnehin schon so einfachen Berechnung kaum mehr wahrnehmbare Geschwindigkeitsvorteile und geht zulasten der Lesbarkeit des Codes. Darum wird die Symmetrie im Code nicht ausgenutzt.
 
 ## Technologien
 
-- HTML5 (strukturierter Aufbau)
-- CSS3 (Media Queries, Variablen, responsive Design)
-- Vanilla JavaScript (modular, ohne Framework)
+- HTML5
+- CSS3
+- Vanilla JavaScript
 
 ## Autor & Lizenz
 
