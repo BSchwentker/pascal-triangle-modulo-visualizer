@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,6 +8,7 @@
   <link rel="stylesheet" href="css/styles.css" />
   <script defer src="js/script.js"></script>
 </head>
+
 <body>
   <!-- Info button -->
   <button id="info-btn" onclick="openInfo()">i</button>
@@ -33,6 +35,8 @@
     <!-- Pascal pattern container -->
     <div id="container">
       <textarea id="output" wrap="off" readonly></textarea>
+      <!-- Alternative output for color mode -->
+      <div id="html-output" class="hidden"></div>
     </div>
 
     <!-- Hidden element for measurement -->
@@ -48,7 +52,8 @@
         Wenn der Wert im Dreieck (also der Binomialkoeffizient) ohne Rest durch den eingestellten Teiler m teilbar ist,
         erscheint an der Position ein "V", ansonsten ein Punkt "·".<br><br>
         Es sind Dreiecke mit bis zu 5.000 Zeilen berechenbar.<br><br>
-        Mehr zum mathematischen Hintergrund und den Quellcode gibt es auf <a href="https://github.com/BSchwentker/pascal-triangle-modulo-visualizer/" target="_blank">GitHub</a>.<br><br>
+        Mehr zum mathematischen Hintergrund und den Quellcode gibt es auf <a
+          href="https://github.com/BSchwentker/pascal-triangle-modulo-visualizer/" target="_blank">GitHub</a>.<br><br>
         Erstellt von <a href="https://github.com/BSchwentker" target="_blank">Björn Schwentker</a>.
         Die Darstellung mit Punkten (·) und Markierungen (V) basiert auf einer Idee von
         <a href="https://www.arndt-bruenner.de/mathe/scripts/pascalmod.htm" target="_blank">Arndt Brünner</a>.
@@ -57,4 +62,5 @@
     </div>
   </div>
 </body>
+
 </html>

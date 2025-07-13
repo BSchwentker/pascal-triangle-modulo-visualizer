@@ -15,6 +15,17 @@
   --button-hover: #c0c0c0;
 }
 
+/* Controls visibility depending on display mode */
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: block;
+  white-space: pre;
+  font-family: monospace;
+}
+
 /* Link styling */
 a {
   color: var(--text-dark);
@@ -114,7 +125,7 @@ button:hover {
 }
 
 /* Textarea for pattern output */
-textarea {
+textarea, #html-output {
   background-color: var(--bg-dark);
   color: var(--text-light);
   font-family: 'Courier New', monospace;
@@ -129,6 +140,11 @@ textarea {
   border-radius: 6px;
   padding: 8px;
 }
+
+#html-output {
+  text-align: left;
+}
+
 
 /* Hidden measurer for dynamic sizing */
 #measurer {
